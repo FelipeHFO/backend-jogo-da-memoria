@@ -22,6 +22,10 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
+    if (authLoginDto.password !== user.password) {
+      throw new UnauthorizedException();
+    }
+
     return this.jwtService.sign({
       id: user.id,
       username: user.username,
